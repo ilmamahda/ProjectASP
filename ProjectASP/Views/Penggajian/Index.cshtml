@@ -1,16 +1,58 @@
-﻿<form>
-    <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+﻿@using ProjectASP.ViewModels
+
+@model PenggajianViewModel
+<main class="app-main">
+    <!--begin::App Content Header-->
+    <div class="app-content-header">
+        <!--begin::Container-->
+        <div class="container-fluid">
+            <!--begin::Row-->
+            <div class="row">
+                <div class="col-sm-6">
+                    <h5 class="mb-0">Form Penggajian</h5>
+                </div>
+                @* <div class="col-sm-6">
+                <ol class="breadcrumb sm-right">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                Simple Tables
+                </li>
+                </ol>
+                </div> *@
+            </div> <!--end::Row-->
+        </div> <!--end::Container-->
+    </div> <!--end::App Content Header--> <!--begin::App Content-->
+    <div class="app-content">
+        <!--begin::Container-->
+        <div class="container-fluid">
+            <!--begin::Row-->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card mb-8">
+                        <div class="card-header">
+                            <div class="card-title">Form Penggajian</div>
+                        </div> <!--end::Header--> <!--begin::Form-->
+                        <form asp-action="Index" asp-controller="Penggajian" method="post">
+                            <!--begin::Body-->
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" asp-for="EmployeeNumber" class="form-label">Employ Number</label> <input asp-for="EmployeeNumber" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    @* <div id="emailHelp" class="form-text">
+                                    We'll never share your email with anyone else.
+                                    </div> *@
+                                </div>
+                                <div class="mb-3"> <label for="exampleInputPassword1" asp-for="FullName" class="form-label">Full Name</label> <input asp-for="FullName" type="text" class="form-control" id="exampleInputPassword1"> </div>
+                                @* <div class="mb-3"> <label for="genderInput" class="form-label">Gender</label> <input type="text" class="form-control" id="genderInput"> </div> *@
+           
+                                <div class="mb-3"> <label for="nominalInput" asp-for="Nominal" class="form-label">Nominal</label> <input asp-for="Nominal" type="text" class="form-control" id="nominalInput"> </div>
+                            </div> <!--end::Body--> <!--begin::Footer-->
+                            <div class="card-footer"> <button type="submit" class="btn btn-primary">Submit</button> </div> <!--end::Footer-->
+                        </form> <!--end::Form-->
+                    </div>
+                </div>
+            </div>
+            <br />
+            
+        </div>
     </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
-    </div>
-    <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</main>

@@ -1,4 +1,5 @@
-﻿using ProjectASP.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using ProjectASP.Data;
 using ProjectASP.Models;
 
 namespace ProjectASP.Repositories
@@ -36,6 +37,10 @@ namespace ProjectASP.Repositories
                 _context.SaveChanges();
             }
             return Karyawan;
+        }
+
+        public IEnumerable<Karyawan> GetAllKaryawan() {
+            return _context.Karyawans.AsNoTracking();
         }
     }
 }

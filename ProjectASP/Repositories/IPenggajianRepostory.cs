@@ -1,4 +1,5 @@
-﻿using ProjectASP.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using ProjectASP.Data;
 using ProjectASP.Models;
 
 namespace ProjectASP.Repositories
@@ -36,6 +37,11 @@ namespace ProjectASP.Repositories
                 _context.SaveChanges();
             }
             return Penggajian;
+        }
+
+        public IEnumerable<Penggajian> GetAllPenggajian()
+        {
+            return _context.Penggajians.AsNoTracking(); 
         }
     }
 }
