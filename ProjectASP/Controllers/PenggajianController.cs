@@ -48,5 +48,10 @@ namespace ProjectASP.Controllers
             var data = _penggajianRepostory.GetAllPenggajian();
             return View(data);
         }
+
+        public IActionResult Json()
+        {
+           return Json("Hello World");
+        }
     }
 }

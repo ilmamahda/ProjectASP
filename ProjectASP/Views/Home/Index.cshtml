@@ -2,7 +2,115 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@* <div class="row">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-header">
+                Bar Chart
+            </div>
+            <div class="card-body">
+                <meta charset="utf-8" />
+                <canvas class="my-4 h-25" id="bar"></canvas>
+            </div>
+        </div>
+    </div>
 </div>
+
+<script src="" integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript">
+    const chart = document.getElementById('bar').getContext('2d');
+    const mychart = new Chart(chart, {
+        type = 'bar',
+        data = {
+            labels : ['001', '002', '003'],
+            datasets: [{
+                labels : 'Bar Chart',
+                data : [100, 200, 300],
+                backgroundcolor: 'rgba(6, 128, 250)'
+            }]
+        },
+        options: {
+            scales : {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+
+    })
+</script> *@
+
+<div class="card mb-4">
+    <div class="card-header">
+        <h3 class="card-title">Sales Value</h3>
+    </div>
+    <div class="card-body">
+        <div id="revenue-chart"></div>
+    </div>
+</div> <!-- /.card --> <!-- DIRECT CHAT -->
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.min.js" integrity="sha256-+vh8GkaU7C9/wbSLIcwq82tQ2wTf44aOHA8HlBMwRI8=" crossorigin="anonymous"></script> <!-- ChartJS -->
+<script>
+    $.ajax({
+        type: "POST",
+        url: "/Penggajian/Json",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (r) { 
+            console.log(r)
+        }
+    });
+    const sales_chart_options = {
+        series: [{
+            name: "Digital Goods",
+            data: [28, 48, 40, 19, 86, 27, 90],
+        },
+        {
+            name: "Electronics",
+            data: [65, 59, 80, 81, 56, 55, 40],
+        },
+        ],
+        chart: {
+            height: 300,
+            type: "bar",
+            toolbar: {
+                show: false,
+            },
+        },
+        legend: {
+            show: false,
+        },
+        colors: ["#0d6efd", "#20c997"],
+        dataLabels: {
+            enabled: false,
+        },
+        stroke: {
+            curve: "smooth",
+        },
+        xaxis: {
+            type: "datetime",
+            categories: [
+                "2023-01-01",
+                "2023-02-01",
+                "2023-03-01",
+                "2023-04-01",
+                "2023-05-01",
+                "2023-06-01",
+                "2023-07-01",
+            ],
+        },
+        tooltip: {
+            x: {
+                format: "MMMM yyyy",
+            },
+        },
+    };
+
+    const sales_chart = new ApexCharts(
+        document.querySelector("#revenue-chart"),
+        sales_chart_options,
+    );
+    sales_chart.render();
+</script> <!-- jsvectormap -->
